@@ -1,0 +1,33 @@
+services:
+  payments_web_service:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      DB_HOST: mysql        
+      DB_PORT: 3306
+      DB_NAME: labo05_payments_db
+      DB_USER: labo05
+      DB_PASSWORD: labo05
+    ports:
+      - "5009:5009"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: labo05_payments_db
+      MYSQL_USER: labo05
+      MYSQL_PASSWORD: labo05
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d
+
+
+volumes:
+  mysql_data:
