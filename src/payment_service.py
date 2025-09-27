@@ -11,7 +11,7 @@ from views.template_view import show_404_page, xml_to_dict
 from views.payment_view import add_payment, pay, show_payment_form
 
 
-class StoreManager(BaseHTTPRequestHandler):
+class PaymentServiceSOA(BaseHTTPRequestHandler):
     def do_GET(self):
         """ Handle GET requests received by the http.server """
         if self.path == "/" or self.path == "/home":
@@ -82,6 +82,6 @@ class StoreManager(BaseHTTPRequestHandler):
         self.wfile.write(html.encode("utf-8"))
 
 if __name__ == "__main__":
-    server = HTTPServer(("0.0.0.0", 5009), StoreManager)
+    server = HTTPServer(("0.0.0.0", 5009), PaymentServiceSOA)
     print("Server running on http://0.0.0.0:5009")
     server.serve_forever()
