@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "payments_service.py"]
+CMD ["python", "payment_service.py"]
