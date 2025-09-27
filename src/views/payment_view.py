@@ -36,9 +36,9 @@ def show_payment_form(id):
 def add_payment(params):
     """ Add payment based on given params """
     if len(params.keys()):
-        order_id = get_param(params, "order_id")
-        user_id = get_param(params, "user_id")
-        total_amount = get_param(params, "total_amount")
+        order_id = get_param(params, "orderId")
+        user_id = get_param(params, "userId")
+        total_amount = get_param(params, "amount")
         result = create_payment(order_id, user_id, total_amount)
     else: 
         return f"""

@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "a4b1ebee-d856-4ce7-92da-2721af7ce5c3",
+		"name": "LOG430 Labo05 - PaymentServiceSOA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6052895"
+	},
+	"item": [
+		{
+			"name": "/payments/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    <paymentRequest>\n        <orderId>1</orderId>\n        <amount>999.76</amount>\n        <userId>1</userId>\n    </paymentRequest>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5009/payments/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5009",
+					"path": [
+						"payments",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/payments/pay",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5009/payments/pay/3",
+					"host": [
+						"localhost"
+					],
+					"port": "5009",
+					"path": [
+						"payments",
+						"pay",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
