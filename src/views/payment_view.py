@@ -69,7 +69,7 @@ def pay(payment_id):
     """ Remove payment with given ID """
     print(f"Request received: /payments/pay{payment_id}")
     update_result = update_status_to_paid(payment_id)
-    print(f"Updated order {update_result["order_id"]} to paid={update_result}")
+    print(f"Updated order {update_result['order_id']} to paid={update_result}")
     payload_to_store_manager = {
         "order_id": update_result["order_id"],
         "is_paid": True
