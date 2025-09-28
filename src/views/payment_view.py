@@ -12,8 +12,10 @@ from controllers.payment_controller import get_payment
 
 def show_payment_form(id):
     """ Show payment form and list """
-    print("payment_id", id)
     payment = get_payment(id)
+    if 'id' not in payment:
+        return get_template(f"""Paiement {id} introuvable.""")
+    
     return get_template(f"""
         <h2>Paiement n° {payment['id']}</h2>
         <p>Ce paiement concerne la commande n° {payment['order_id']} de l'utilisateur n° {payment['user_id']}. Le montant à payer est de ${payment['total_amount']}.</p> 
@@ -65,19 +67,20 @@ def add_payment(params):
     
 def pay(payment_id):
     """ Remove payment with given ID """
-    print("start to pay")
+    print(f"Request received: /payments/pay{payment_id}")
     update_result = update_status_to_paid(payment_id)
-    print("update_result", update_result)
+    print(f"Updated order {update_result["order_id"]} to paid={update_result}")
     payload_to_store_manager = {
         "order_id": update_result["order_id"],
         "is_paid": True
     }
+    print("Notify store_manager via PUT /orders")
     response = requests.put(
         'http://store_manager:5000/orders',
         data=json.dumps(payload_to_store_manager),
         headers={'Content-Type': 'application/json'}
     )
-    print(response, response.status_code)
+    print(f"Response from store_manager: {response.status_code}")
     return  get_template(f"""
                 <h2>OK</h2>
                 <p>La commande {update_result["order_id"]} a été payé.</p>

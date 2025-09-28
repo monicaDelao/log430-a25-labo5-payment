@@ -40,9 +40,11 @@ class PaymentServiceSOA(BaseHTTPRequestHandler):
             # Handle XML parsing error
             params = {}
         if self.path == "/payments/add":
+            print("Endpoint: /payments/add")
             response = add_payment(params)
             self._send_html(response)
         elif self.path.startswith("/payments/pay"):
+            print("Endpoint: /payments/pay")
             id = self.path.split("/")[-1]
             response = pay(id)
             self._send_html(response)

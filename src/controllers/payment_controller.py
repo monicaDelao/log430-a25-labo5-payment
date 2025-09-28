@@ -11,6 +11,7 @@ def create_payment(order_id, user_id, total_amount):
     try:
         return create_payment(order_id, user_id, total_amount)
     except ValueError as e:
+        print(e)
         return str(e)
     except Exception as e:
         print(e)
