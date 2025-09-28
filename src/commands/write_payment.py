@@ -44,7 +44,10 @@ def update_status_to_paid(payment_id: int):
         payment.is_paid = True
         session.commit()
         
-        return payment_id
+        return {
+            "payment_id": payment_id,
+            "order_id": payment.order_id
+        }
         
     except Exception as e:
         session.rollback()

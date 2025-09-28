@@ -10,9 +10,8 @@ from models.payment import Payment
 def get_payment_by_id(payment_id):
     """Get payment by ID """
     session = get_sqlalchemy_session()
-    result = session.query(Payment).filter_by(id=payment_id, is_paid=0).all()
+    result = session.query(Payment).filter_by(id=payment_id).all()
 
-    print(result[0].id)
     if len(result):
         return {
             "id": result[0].id,

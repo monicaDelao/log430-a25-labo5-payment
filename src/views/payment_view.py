@@ -3,13 +3,16 @@ Payment view
 SPDX - License - Identifier: LGPL - 3.0 - or -later
 Auteurs : Gabriel C. Ullmann, Fabio Petrillo, 2025
 """
+import json
 import numbers
+import requests
 from commands.write_payment import create_payment, update_status_to_paid
 from views.template_view import get_param, get_template
 from controllers.payment_controller import get_payment
 
 def show_payment_form(id):
     """ Show payment form and list """
+    print("payment_id", id)
     payment = get_payment(id)
     return get_template(f"""
         <h2>Paiement n° {payment['id']}</h2>
@@ -62,9 +65,21 @@ def add_payment(params):
     
 def pay(payment_id):
     """ Remove payment with given ID """
-    update_status_to_paid(payment_id)
+    print("start to pay")
+    update_result = update_status_to_paid(payment_id)
+    print("update_result", update_result)
+    payload_to_store_manager = {
+        "order_id": update_result["order_id"],
+        "is_paid": True
+    }
+    response = requests.put(
+        'http://store_manager:5000/orders',
+        data=json.dumps(payload_to_store_manager),
+        headers={'Content-Type': 'application/json'}
+    )
+    print(response, response.status_code)
     return  get_template(f"""
                 <h2>OK</h2>
-                <p>La commande a été payé.</p>
+                <p>La commande {update_result["order_id"]} a été payé.</p>
             """)
     
