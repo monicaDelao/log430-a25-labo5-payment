@@ -46,11 +46,17 @@ def update_status_to_paid(payment_id: int):
         
         return {
             "payment_id": payment_id,
-            "order_id": payment.order_id
+            "order_id": payment.order_id,
+            "is_paid": True
         }
         
     except Exception as e:
         session.rollback()
-        raise e
+        return {
+            "payment_id": payment_id,
+            "order_id": payment.order_id,
+            "is_paid": False,
+            "error": e
+        }
     finally:
         session.close()

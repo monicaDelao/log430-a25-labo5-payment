@@ -18,6 +18,7 @@ def get_payment_by_id(payment_id):
             "order_id": result[0].order_id,
             "user_id": result[0].user_id,
             "total_amount": result[0].total_amount,
+            "is_paid": result[0].is_paid,
         }
     else:
         return {}
