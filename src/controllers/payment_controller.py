@@ -4,6 +4,7 @@ SPDX - License - Identifier: LGPL - 3.0 - or -later
 Auteurs : Gabriel C. Ullmann, Fabio Petrillo, 2025
 """
 import numbers
+import requests
 from commands.write_payment import create_payment, update_status_to_paid
 from queries.read_payment import get_payment_by_id
 
@@ -25,7 +26,7 @@ def add_payment(request):
 def process_payment(payment_id, credit_card_data):
     """ Process payment with given ID, notify store_manager sytem that the order is paid """
     # S'il s'agissait d'un véritable service de paiement, nous utiliserions les données de la carte de crédit pour effectuer le paiement.
-    process_credit_card_payment(credit_card_data)
+    _process_credit_card_payment(credit_card_data)
 
     # Si le paiement est réussi, mettre à jour les statut de la commande
     update_result = update_status_to_paid(payment_id)
@@ -35,9 +36,13 @@ def process_payment(payment_id, credit_card_data):
         "payment_id": update_result["payment_id"],
         "is_paid": update_result["is_paid"]
     }
+
+    # TODO: faire la mise à jour de la commande dans le Store Manager (en utilisant l'order_id)
+    # requests.put
+    
     return result
     
-def process_credit_card_payment(payment_data):
+def _process_credit_card_payment(payment_data):
     """ Placeholder method for simulated credit card payment """
     print(payment_data.get('cardNumber'))
     print(payment_data.get('cardCode'))

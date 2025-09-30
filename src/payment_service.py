@@ -48,7 +48,7 @@ def get_payment_details(payment_id):
 def handle_404(error):
     """Handle 404 errors with JSON response"""
     print(error)
-    return jsonify({"error": "Resource not found"}), 404
+    return jsonify({"error": "Endpoint ou ressource introuvable"}), 404
 
 # Start Flask app
 if __name__ == "__main__":
