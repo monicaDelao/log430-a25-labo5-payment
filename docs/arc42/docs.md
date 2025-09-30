@@ -28,7 +28,7 @@ L'application « Payment Service » est un microservice de traitement de paiemen
 | Contrainte | Description |
 |------------|-------------|
 | **Technologie** | Utilisation de Python 3, Flask et Docker |
-| **Déploiement** | Déploiement en conteneur Docker |
+| **Déploiement** | Déploiement en conteneur Docker, API Gateway KrakenD |
 | **Éducatif** | L'application doit clairement démontrer les principes microservices et la séparation des responsabilités |
 | **Conception API** | Doit suivre les principes RESTful et microservices avec gestion appropriée des erreurs |
 | **Simulation** | Le traitement des paiements est simulé (pas de vraie intégration bancaire) |
@@ -82,7 +82,7 @@ Veuillez consulter le fichier `/docs/adr/adr001.md`.
 - Déploiement conteneurisé pour isolation et résilience
 
 ### Extensibilité
-- Possibilité d'intégrer des differentes plateformes de paiement comme Stripe, PayPal, ou integration bancaire
+- Possibilité d'intégrer des differentes plateformes de paiement comme Stripe, PayPal, portefeuilles électroniques, etc.
 - Possibilité d'intégrer avec des autres services, liées au Store Manager ou non
 
 ### Maintenabilité

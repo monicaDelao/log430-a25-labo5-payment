@@ -1,8 +1,0 @@
-@startuml
-    start
-        :Créer une transaction de paiement;
-        :Recevoir la confirmation que la transaction de paiement a été créé;
-        :Envoyer les détails de la carte de crédit;
-        :Recevoir la confirmation que le paiement a été effectué;
-    stop
-@enduml

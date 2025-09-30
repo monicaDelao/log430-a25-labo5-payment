@@ -1,10 +1,10 @@
 @startuml
   node Magasin {
-    component "Nginx" 
+    component "KrakenD" 
     component "store_manager.py" 
     database "MySQL 1"
     database "Redis"
-    "NGINX" <--> "store_manager.py"
+    "KrakenD" <--> "store_manager.py"
     "store_manager.py" <--> "MySQL 1"
     "store_manager.py" <--> "Redis"
   }
@@ -15,6 +15,6 @@
     "payment_service.py" <--> "MySQL 2"
   }
 
-  "NGINX"  <-- "payment_service.py" : HTTPS
-  "store_manager.py"  --> "payment_service.py" : HTTPS
+  "KrakenD" <--> "payment_service.py" : HTTPS
+
 @enduml
