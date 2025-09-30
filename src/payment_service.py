@@ -21,6 +21,7 @@ def post_add_payment():
         result = add_payment(request)
         return jsonify(result), 201
     except Exception as e:
+        print(e)
         return jsonify({"error": str(e)}), 400
 
 @app.route("/payments/process/<int:payment_id>", methods=["POST"])
