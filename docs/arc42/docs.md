@@ -28,7 +28,8 @@ L'application « Payment Service » est un microservice de traitement de paiemen
 | Contrainte | Description |
 |------------|-------------|
 | **Technologie** | Utilisation de Python 3, Flask et Docker |
-| **Déploiement** | Déploiement en conteneur Docker, API Gateway KrakenD |
+| **Déploiement** | Déploiement en conteneur Docker |
+| **API Gateway** | KrakenD comme point d'entrée unique pour tous les appels API avec contrôle de rate limiting et timeout |
 | **Éducatif** | L'application doit clairement démontrer les principes microservices et la séparation des responsabilités |
 | **Conception API** | Doit suivre les principes RESTful et microservices avec gestion appropriée des erreurs |
 | **Simulation** | Le traitement des paiements est simulé (pas de vraie intégration bancaire) |
