@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a4b1ebee-d856-4ce7-92da-2721af7ce5c3",
-		"name": "LOG430 Labo05 - Payment",
+		"name": "LOG430 Labo05 Payment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "6052895"
 	},
@@ -24,13 +24,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:5009/kaka",
+					"raw": "{{baseURL}}/",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "5009",
 					"path": [
-						"kaka"
+						""
 					]
 				}
 			},
@@ -51,11 +50,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:5009/payments",
+					"raw": "{{baseURL}}/payments",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "5009",
 					"path": [
 						"payments"
 					]
@@ -78,15 +76,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:5009/payments/process/25",
+					"raw": "{{baseURL}}/payments-api/payments/36",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "5009",
 					"path": [
+						"payments-api",
 						"payments",
-						"process",
-						"25"
+						"36"
 					]
 				}
 			},
@@ -98,18 +95,47 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5009/payments/25",
+					"raw": "{{baseURL}}/payments/30",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "5009",
 					"path": [
 						"payments",
-						"25"
+						"30"
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "localhost:5009"
 		}
 	]
 }
