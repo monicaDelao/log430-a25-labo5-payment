@@ -1,7 +1,7 @@
 services:
-  payments_web_service:
+  payments_api:
     build: .
-    container_name: payments_web_service 
+    container_name: payments_api 
     environment:
       - PYTHONUNBUFFERED=1
     volumes:

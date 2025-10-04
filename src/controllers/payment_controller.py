@@ -25,8 +25,7 @@ def add_payment(request):
     
 def process_payment(payment_id, credit_card_data):
     """ Process payment with given ID, notify store_manager sytem that the order is paid """
-    # S'il s'agissait d'un véritable service de paiement, nous utiliserions les données de la carte de crédit pour effectuer le paiement.
-    # Cela pourrait se trouver dans un microservice distinct.
+    # S'il s'agissait d'une véritable API de paiement, nous enverrions les données de la carte de crédit à un payment gateway (ex. Stripe, Paypal) pour effectuer le paiement. Cela pourrait se trouver dans un microservice distinct.
     _process_credit_card_payment(credit_card_data)
 
     # Si le paiement est réussi, mettre à jour les statut de la commande
