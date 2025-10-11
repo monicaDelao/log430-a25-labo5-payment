@@ -10,11 +10,11 @@
   }
 
   node ServicePaiement {
-    component "payment_service.py" 
+    component "payments_api.py" 
     database "MySQL 2"
-    "payment_service.py" <--> "MySQL 2"
+    "payments_api.py" <--> "MySQL 2"
   }
 
-  "KrakenD" <--> "payment_service.py" : HTTPS
+  "KrakenD" <--> "payments_api.py" : HTTPS
 
 @enduml
